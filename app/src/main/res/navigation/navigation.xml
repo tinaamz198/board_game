@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/entranceFragment">
+
+    <fragment
+        android:id="@+id/entranceFragment"
+        android:name="com.example.boardgame.EntranceFragment"
+        android:label="EntranceFragment" >
+        <action
+            android:id="@+id/action_entranceFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.example.boardgame.CatalogFragment"
+        android:label="Каталог"
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_catalogFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.boardgame.FavoriteFragment"
+        android:label="Избранное"
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/myGamesFragment"
+        android:name="com.example.boardgame.MyGamesFragment"
+        android:label="Мои игры"
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="com.example.boardgame.GameDetailFragment"
+        android:label="Детали игры" />
+
+</navigation>

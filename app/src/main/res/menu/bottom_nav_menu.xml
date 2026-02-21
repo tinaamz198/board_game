@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/catalogFragment" android:title="Каталог" android:icon="@android:drawable/ic_menu_search" />
+    <item android:id="@+id/favoriteFragment" android:title="Избранное" android:icon="@android:drawable/btn_star_big_on" />
+    <item android:id="@+id/myGamesFragment" android:title="Мои игры" android:icon="@android:drawable/ic_menu_edit" />
+</menu>
