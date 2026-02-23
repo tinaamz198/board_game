@@ -58,14 +58,18 @@
                     android:hint="Название"
                     android:textColor="#1C1C1E"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:padding="4dp"/>
 
-                <TextView
+                <RatingBar
+                    android:id="@+id/gameRatingBar"
+                    style="@android:style/Widget.DeviceDefault.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Описание"
-                    android:textColor="#8E8E93"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="8dp"
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    android:progressTint="#FFD60A" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,6 +115,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:text="Описание игры"
+                    android:textColor="#1C1C1E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/Description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="Краткое описание..."
+                    android:textColor="#3A3A3C"
+                    android:textSize="16sp"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
                     android:text="Правила игры"
                     android:textColor="#1C1C1E"
                     android:textSize="20sp"
@@ -120,11 +144,13 @@
                     android:id="@+id/detailDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:background="@null"
+                    android:hint="Подробные правила..."
                     android:lineSpacingExtra="4dp"
                     android:textColor="#3A3A3C"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:padding="8dp"/>
 
                 <Button
                     android:id="@+id/btnPickPhoto"

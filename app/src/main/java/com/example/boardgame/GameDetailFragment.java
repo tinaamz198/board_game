@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -24,19 +25,20 @@ public class GameDetailFragment extends Fragment {
     private GameViewModel gameViewModel;
     private BoardGame currentGame;
     private ImageView detailImage;
+    private RatingBar ratingBar;
     private String selectedImageUri = "";
 
-    // Лаунчер для выбора фото из галереи
+    // Поля ввода
+    private EditText etTitle, etShortDesc, etFullRules, etPlayers, etDifficulty, etCategory;
+
     private final ActivityResultLauncher<Intent> pickImageLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                     Uri imageUri = result.getData().getData();
                     if (imageUri != null) {
-                        // Сохраняем права на чтение URI (важно для Android 10+)
                         requireContext().getContentResolver().takePersistableUriPermission(
                                 imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
                         selectedImageUri = imageUri.toString();
                         detailImage.setImageURI(imageUri);
                     }
@@ -54,19 +56,23 @@ public class GameDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
 
-        EditText etTitle = view.findViewById(R.id.detailTitle);
-        EditText etDesc = view.findViewById(R.id.detailDescription);
-        EditText etPlayers = view.findViewById(R.id.etPlayers);
-        EditText etDifficulty = view.findViewById(R.id.etDifficulty);
-        EditText etCategory = view.findViewById(R.id.etCategory);
+        // Инициализация View
+        etTitle = view.findViewById(R.id.detailTitle);
+        etShortDesc = view.findViewById(R.id.Description); // Новое поле
+        etFullRules = view.findViewById(R.id.detailDescription);
+        etPlayers = view.findViewById(R.id.etPlayers);
+        etDifficulty = view.findViewById(R.id.etDifficulty);
+        etCategory = view.findViewById(R.id.etCategory);
         detailImage = view.findViewById(R.id.detailImage);
+        ratingBar = view.findViewById(R.id.gameRatingBar);
 
         Button btnStart = view.findViewById(R.id.btnStartPlaying);
         Button btnEdit = view.findViewById(R.id.btnEditGame);
         Button btnSave = view.findViewById(R.id.btnSaveGame);
-        Button btnPickPhoto = view.findViewById(R.id.btnPickPhoto); // Новая кнопка
+        Button btnPickPhoto = view.findViewById(R.id.btnPickPhoto);
 
-        toggleEdit(false, etTitle, etDesc, etPlayers, etDifficulty, etCategory);
+        // По умолчанию всё выключено
+        toggleEdit(false, etTitle, etShortDesc, etFullRules, etPlayers, etDifficulty, etCategory);
 
         if (getArguments() != null) {
             int id = getArguments().getInt("id");
@@ -75,12 +81,13 @@ public class GameDetailFragment extends Fragment {
                     if (g.getId() == id) {
                         currentGame = g;
                         etTitle.setText(g.getTitle());
-                        etDesc.setText(g.getDescription());
+                        etShortDesc.setText(g.getDescription()); // Здесь описание
+                        etFullRules.setText(g.getDescription()); // Здесь правила (пока из того же поля)
                         etPlayers.setText(g.getPlayers());
                         etDifficulty.setText(g.getDifficulty());
                         etCategory.setText(g.getCategory());
+                        ratingBar.setRating(g.getRating());
 
-                        // Загрузка картинки
                         displayImage(g.getImagePath());
 
                         btnStart.setVisibility(g.getTitle().equalsIgnoreCase("Правда или Действие") ? View.VISIBLE : View.GONE);
@@ -90,6 +97,14 @@ public class GameDetailFragment extends Fragment {
             });
         }
 
+        // Логика рейтинга
+        ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {
+            if (fromUser && currentGame != null) {
+                currentGame.setRating(rating);
+                gameViewModel.update(currentGame);
+            }
+        });
+
         btnPickPhoto.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -98,29 +113,30 @@ public class GameDetailFragment extends Fragment {
         });
 
         btnEdit.setOnClickListener(v -> {
-            toggleEdit(true, etTitle, etDesc, etPlayers, etDifficulty, etCategory);
+            toggleEdit(true, etTitle, etShortDesc, etFullRules, etPlayers, etDifficulty, etCategory);
             btnSave.setVisibility(View.VISIBLE);
-            btnPickPhoto.setVisibility(View.VISIBLE); // Показываем выбор фото при редактировании
+            btnPickPhoto.setVisibility(View.VISIBLE);
             btnEdit.setVisibility(View.GONE);
         });
 
         btnSave.setOnClickListener(v -> {
             if (currentGame != null) {
                 currentGame.setTitle(etTitle.getText().toString());
-                currentGame.setDescription(etDesc.getText().toString());
+                currentGame.setDescription(etShortDesc.getText().toString());
                 currentGame.setPlayers(etPlayers.getText().toString());
                 currentGame.setDifficulty(etDifficulty.getText().toString());
                 currentGame.setCategory(etCategory.getText().toString());
+
                 if (!selectedImageUri.isEmpty()) {
                     currentGame.setImagePath(selectedImageUri);
                 }
 
                 gameViewModel.update(currentGame);
-                toggleEdit(false, etTitle, etDesc, etPlayers, etDifficulty, etCategory);
+                toggleEdit(false, etTitle, etShortDesc, etFullRules, etPlayers, etDifficulty, etCategory);
                 btnSave.setVisibility(View.GONE);
                 btnPickPhoto.setVisibility(View.GONE);
                 btnEdit.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "Обновлено!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Сохранено!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -148,8 +164,17 @@ public class GameDetailFragment extends Fragment {
         for (View v : views) {
             v.setEnabled(enabled);
             v.setFocusableInTouchMode(enabled);
+            v.setFocusable(enabled);
             if (v instanceof EditText) {
-                v.setAlpha(enabled ? 1.0f : 0.8f);
+                if (enabled) {
+                    v.setBackgroundResource(R.drawable.edit_text_border);
+                    v.setPadding(24, 24, 24, 24);
+                    v.setAlpha(1.0f);
+                } else {
+                    v.setBackground(null);
+                    v.setPadding(8, 8, 8, 8);
+                    v.setAlpha(0.8f);
+                }
             }
         }
     }

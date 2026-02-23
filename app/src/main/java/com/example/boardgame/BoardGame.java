@@ -12,16 +12,20 @@ public class BoardGame {
     private String description;
     private String imagePath;
 
-    private boolean isFeatured; // ДОБАВЛЕНО: для отображения в карусели
+    private boolean isFeatured;
     private boolean isFavorite;
     private boolean isUserGame;
     private String players;
     private String difficulty;
     private String category;
 
-    // Конструктор
+    // 1. ДОБАВЛЕНО: Поле для хранения рейтинга
+    private float rating;
+
+    // ОБНОВЛЕННЫЙ Конструктор (добавлен параметр float rating)
     public BoardGame(String title, String description, String imagePath, boolean isFeatured,
-                     boolean isFavorite, boolean isUserGame, String players, String difficulty, String category) {
+                     boolean isFavorite, boolean isUserGame, String players, String difficulty,
+                     String category, float rating) {
         this.title = title;
         this.description = description;
         this.imagePath = imagePath;
@@ -31,6 +35,7 @@ public class BoardGame {
         this.players = players;
         this.difficulty = difficulty;
         this.category = category;
+        this.rating = rating; // Сохраняем рейтинг
     }
 
     // Геттеры и сеттеры
@@ -46,7 +51,6 @@ public class BoardGame {
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
-    // Тот самый метод, который искал CatalogFragment
     public boolean isFeatured() { return isFeatured; }
     public void setFeatured(boolean featured) { isFeatured = featured; }
 
@@ -64,4 +68,8 @@ public class BoardGame {
 
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
+
+    // 2. ДОБАВЛЕНО: Методы доступа к рейтингу
+    public float getRating() { return rating; }
+    public void setRating(float rating) { this.rating = rating; }
 }

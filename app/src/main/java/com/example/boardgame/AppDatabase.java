@@ -30,11 +30,11 @@ public abstract class AppDatabase extends RoomDatabase {
             super.onCreate(db);
             Executors.newSingleThreadExecutor().execute(() -> {
                 GameDao dao = instance.gameDao();
-                // Используем категории: Вечеринка, Стратегия, Детектив
-                dao.insert(new BoardGame("Правда или Действие", "Классическая игра...", "game1", true, false, false, "2-10", "Легко", "Вечеринка"));
-                dao.insert(new BoardGame("Мафия", "Детективная игра.", "game2", true, false, false, "6-15", "Средне", "Детектив"));
-                dao.insert(new BoardGame("Монополия", "Экономическая стратегия.", "game3", false, false, false, "2-6", "Сложно", "Стратегия"));
-                dao.insert(new BoardGame("Крокодил", "Жесты и мимика.", "game1", false, false, false, "3-12", "Легко", "Вечеринка"));
+                // Добавляем 0.0f в конце для каждой игры
+                dao.insert(new BoardGame("Правда или Действие", "Классическая игра...", "game1", true, false, false, "2-10", "Легко", "Вечеринка", 0.0f));
+                dao.insert(new BoardGame("Мафия", "Детективная игра.", "game2", true, false, false, "6-15", "Средне", "Детектив", 0.0f));
+                dao.insert(new BoardGame("Монополия", "Экономическая стратегия.", "game3", false, false, false, "2-6", "Сложно", "Стратегия", 0.0f));
+                dao.insert(new BoardGame("Крокодил", "Жесты и мимика.", "game1", false, false, false, "3-12", "Легко", "Вечеринка", 0.0f));
             });
         }
     };
