@@ -4,65 +4,93 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@android:color/white">
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="32dp"
+    android:paddingTop="12dp"
+    android:background="#1C1C1E"> <View
+    android:layout_width="40dp"
+    android:layout_height="4dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="20dp"
+    android:background="#3A3A3C"
+    app:cornerRadius="2dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Категории"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#333333"/>
+        android:textColor="#FFFFFF"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        app:chipSpacingHorizontal="8dp"
         app:singleSelection="true"
-        app:selectionRequired="true"> <com.google.android.material.chip.Chip
-        android:id="@+id/chipAll"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Все"
-        android:checked="true"/>
+        app:selectionRequired="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Все"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:chipStrokeColor="#3A3A3C"
+            app:checkedIconVisible="false"
+            android:checked="true"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipStrategy"
             style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Стратегия"/>
+            android:text="Стратегия"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipParty"
             style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Вечеринка"/> <com.google.android.material.chip.Chip
+            android:text="Вечеринка"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
+
+        <com.google.android.material.chip.Chip
             android:id="@+id/chipDetective"
             style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Детектив"/>
+            android:text="Детектив"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Сложность"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#333333"/>
+        android:textColor="#FFFFFF"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgDifficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        app:chipSpacingHorizontal="8dp"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -70,25 +98,42 @@
             style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Легко"/> <com.google.android.material.chip.Chip
-        android:id="@+id/chipMedium"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Средне"/> <com.google.android.material.chip.Chip
-        android:id="@+id/chipHard"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сложно"/> </com.google.android.material.chip.ChipGroup>
+            android:text="Легко"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMedium"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Средне"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHard"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сложно"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E"
+            app:checkedIconVisible="false"/>
+    </com.google.android.material.chip.ChipGroup>
 
     <Button
         android:id="@+id/btnApplyFilter"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
-        android:text="Показать результаты"
-        android:backgroundTint="#2A5DA1"
+        android:text="ПОКАЗАТЬ РЕЗУЛЬТАТЫ"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#0A84FF"
         android:textColor="@android:color/white"
-        app:cornerRadius="16dp"/>
+        app:cornerRadius="18dp"
+        android:letterSpacing="0.05"/>
 </LinearLayout>
