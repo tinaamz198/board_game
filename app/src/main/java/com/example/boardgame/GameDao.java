@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface GameDao {
-    // Этот запрос теперь берет ВСЕ игры для общего каталога
+    // Этот запрос — наш главный источник новинок
     @Query("SELECT * FROM games_table ORDER BY id DESC")
     LiveData<List<BoardGame>> getAllGames();
 

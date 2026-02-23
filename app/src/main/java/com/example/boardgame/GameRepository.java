@@ -15,23 +15,26 @@ public class GameRepository {
         gameDao = database.gameDao();
     }
 
-    public LiveData<List<BoardGame>> getCatalogGames() {
-        return gameDao.getAllGames();
+    public LiveData<List<BoardGame>> getAllGames() {
+        return gameDao.getAllGames(); // Основной источник для новинок и списка
     }
-    public LiveData<List<BoardGame>> getFavoriteGames() { return gameDao.getFavoriteGames(); }
-    public LiveData<List<BoardGame>> getUserGames() { return gameDao.getUserGames(); }
+
+    public LiveData<List<BoardGame>> getFavoriteGames() {
+        return gameDao.getFavoriteGames();
+    }
+
+    public LiveData<List<BoardGame>> getUserGames() {
+        return gameDao.getUserGames();
+    }
 
     public void insert(BoardGame game) {
         executorService.execute(() -> gameDao.insert(game));
     }
+
     public void delete(BoardGame game) {
         executorService.execute(() -> gameDao.delete(game));
     }
-    public LiveData<List<BoardGame>> getAllGames() {
-        return gameDao.getAllGames(); // Просто возвращаем переменную, которую создали в конструкторе
-    }
 
-    // Убедись, что метод update выглядит так:
     public void update(BoardGame game) {
         executorService.execute(() -> gameDao.update(game));
     }

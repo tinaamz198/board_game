@@ -14,8 +14,10 @@ public class GameViewModel extends AndroidViewModel {
         repository = new GameRepository(application);
     }
 
-    public LiveData<List<BoardGame>> getCatalogGames() {
-        return repository.getCatalogGames();
+    // УДАЛЕНО: getPopularGames() больше не вызывает ошибку
+
+    public LiveData<List<BoardGame>> getAllGames() {
+        return repository.getAllGames();
     }
 
     public LiveData<List<BoardGame>> getFavoriteGames() {
@@ -26,12 +28,7 @@ public class GameViewModel extends AndroidViewModel {
         return repository.getUserGames();
     }
 
-    public LiveData<List<BoardGame>> getAllGames() {
-        return repository.getAllGames();
-    }
-
     public void insert(BoardGame game) { repository.insert(game); }
     public void delete(BoardGame game) { repository.delete(game); }
     public void update(BoardGame game) { repository.update(game); }
-
 }

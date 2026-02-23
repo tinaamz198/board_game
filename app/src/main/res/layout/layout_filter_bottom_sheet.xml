@@ -8,13 +8,15 @@
     android:paddingRight="24dp"
     android:paddingBottom="32dp"
     android:paddingTop="12dp"
-    android:background="#1C1C1E"> <View
-    android:layout_width="40dp"
-    android:layout_height="4dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="20dp"
-    android:background="#3A3A3C"
-    app:cornerRadius="2dp" />
+    android:background="#1C1C1E">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="#3A3A3C"
+        app:cornerRadius="2dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,10 +42,12 @@
             android:layout_height="wrap_content"
             android:text="Все"
             android:textColor="#FFFFFF"
+            android:checked="true"
             app:chipBackgroundColor="#2C2C2E"
-            app:chipStrokeColor="#3A3A3C"
-            app:checkedIconVisible="false"
-            android:checked="true"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"
+            app:chipStrokeColor="#0A84FF"
+            app:chipStrokeWidth="1dp"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipStrategy"
@@ -53,7 +57,8 @@
             android:text="Стратегия"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipParty"
@@ -63,7 +68,8 @@
             android:text="Вечеринка"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipDetective"
@@ -73,7 +79,8 @@
             android:text="Детектив"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
@@ -101,7 +108,8 @@
             android:text="Легко"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipMedium"
@@ -111,7 +119,8 @@
             android:text="Средне"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipHard"
@@ -121,45 +130,8 @@
             android:text="Сложно"
             android:textColor="#FFFFFF"
             app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
-    </com.google.android.material.chip.ChipGroup>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Сортировка"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"/>
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/cgSort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:singleSelection="true"
-        app:selectionRequired="true">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSortAsc"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="А-Я"
-            android:textColor="#FFFFFF"
-            app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"
-            android:checked="true"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSortDesc"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Я-А"
-            android:textColor="#FFFFFF"
-            app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="false"/>
+            app:checkedIconVisible="true"
+            app:checkedIconTint="#FFFFFF"/>
     </com.google.android.material.chip.ChipGroup>
 
     <Button
@@ -172,6 +144,5 @@
         android:textStyle="bold"
         android:backgroundTint="#0A84FF"
         android:textColor="@android:color/white"
-        app:cornerRadius="18dp"
-        android:letterSpacing="0.05"/>
+        app:cornerRadius="18dp"/>
 </LinearLayout>
