@@ -77,11 +77,16 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         return null;
     }
 
-    public void sort(int type) {
-        Collections.sort(gameList, (g1, g2) -> g1.getTitle().compareToIgnoreCase(g2.getTitle()));
+    public void sort(boolean ascending) {
+        Collections.sort(gameList, (g1, g2) -> {
+            if (ascending) {
+                return g1.getTitle().compareToIgnoreCase(g2.getTitle());
+            } else {
+                return g2.getTitle().compareToIgnoreCase(g1.getTitle());
+            }
+        });
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

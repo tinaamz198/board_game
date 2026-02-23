@@ -41,13 +41,24 @@
         android:name="com.example.boardgame.FullCatalogFragment"
         android:label="Весь каталог"
         tools:layout="@layout/fragment_full_catalog">
+
         <action
             android:id="@+id/action_fullCatalogFragment_to_gameDetailFragment"
             app:destination="@id/gameDetailFragment" />
+
         <action
             android:id="@+id/action_fullCatalogFragment_to_filterBottomSheet"
             app:destination="@id/filterBottomSheet" />
+
+        <action
+            android:id="@+id/action_fullCatalogFragment_to_sortBottomSheet"
+            app:destination="@id/sortBottomSheet" />
     </fragment>
+
+    <dialog
+        android:id="@+id/sortBottomSheet"
+        android:name="com.example.boardgame.SortBottomSheet"
+        android:label="Сортировка" />
 
     <fragment
         android:id="@+id/gameDetailFragment"
@@ -84,5 +95,6 @@
         android:id="@+id/filterBottomSheet"
         android:name="com.example.boardgame.FilterBottomSheet"
         android:label="FilterBottomSheet" />
+
 
 </navigation>
