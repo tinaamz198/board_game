@@ -4,36 +4,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="#1C1C1E"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="12dp">
 
-        <ImageView
-            android:id="@+id/gameImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageContainer"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/gameImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tvNoPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2C2C2E"
+                    android:gravity="center"
+                    android:text="No icon"
+                    android:textColor="#8E8E93"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/gameTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:text="Название игры"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imgFavorite"
-            app:layout_constraintStart_toEndOf="@+id/gameImage"
+            app:layout_constraintStart_toEndOf="@+id/imageContainer"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -44,19 +70,22 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="Краткое описание игры..."
+            android:textColor="#8E8E93"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/imgFavorite"
             app:layout_constraintStart_toStartOf="@+id/gameTitle"
             app:layout_constraintTop_toBottomOf="@+id/gameTitle" />
 
         <ImageView
             android:id="@+id/imgFavorite"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="8dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:padding="10dp"
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/btn_star_big_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

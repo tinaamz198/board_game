@@ -10,6 +10,16 @@ import java.util.List;
 
 @Dao
 public interface GameDao {
+    // Этот запрос теперь берет ВСЕ игры для общего каталога
+    @Query("SELECT * FROM games_table ORDER BY id DESC")
+    LiveData<List<BoardGame>> getAllGames();
+
+    @Query("SELECT * FROM games_table WHERE isFavorite = 1")
+    LiveData<List<BoardGame>> getFavoriteGames();
+
+    @Query("SELECT * FROM games_table WHERE isUserGame = 1 ORDER BY id DESC")
+    LiveData<List<BoardGame>> getUserGames();
+
     @Insert
     void insert(BoardGame game);
 
@@ -18,19 +28,4 @@ public interface GameDao {
 
     @Delete
     void delete(BoardGame game);
-
-    // Запрос для каталога: только системные игры, не в архиве
-    @Query("SELECT * FROM games_table WHERE isUserGame = 0 AND isArchived = 0")
-    LiveData<List<BoardGame>> getCatalogGames();
-
-    // Запрос для избранного: только те, где стоит галочка (1)
-    @Query("SELECT * FROM games_table WHERE isFavorite = 1")
-    LiveData<List<BoardGame>> getFavoriteGames();
-
-    // Запрос для "Моих игр": только те, что создал пользователь (isUserGame = 1)
-    @Query("SELECT * FROM games_table WHERE isUserGame = 1")
-    LiveData<List<BoardGame>> getUserGames();
-
-    @Query("SELECT * FROM games_table")
-    LiveData<List<BoardGame>> getAllGames();
 }

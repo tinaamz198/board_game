@@ -10,35 +10,30 @@
         android:layout_height="wrap_content"
         android:paddingBottom="24dp">
 
+        <ImageView
+            android:id="@+id/detailImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Назад"
-            android:elevation="10dp"
             android:src="@android:drawable/ic_menu_revert"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@android:color/darker_gray" />
-
-        <ImageView
-            android:id="@+id/detailImage"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/game1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:tint="#FFFFFF" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-30dp"
             app:cardCornerRadius="30dp"
-            app:cardElevation="0dp"
             app:layout_constraintTop_toBottomOf="@id/detailImage">
 
             <LinearLayout
@@ -47,11 +42,12 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <TextView
+                <EditText
                     android:id="@+id/detailTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Название игры"
+                    android:background="@null"
+                    android:hint="Название игры"
                     android:textColor="#333333"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -59,31 +55,98 @@
                 <View
                     android:layout_width="50dp"
                     android:layout_height="4dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:background="#DAE9FA" />
 
-                <TextView
-                    android:id="@+id/detailDescription"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:lineSpacingExtra="4dp"
-                    android:text="Здесь будет очень длинный и интересный текст о правилах игры, её истории и количестве игроков..."
+                    android:background="#F0F7FF"
+                    android:padding="12dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👤 Игроки" android:textSize="10sp" android:textColor="#999999"/>
+                        <EditText android:id="@+id/etPlayers" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2-4" android:textSize="14sp" android:textStyle="bold" android:background="@null" android:textColor="#2A5DA1"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥 Сложность" android:textSize="10sp" android:textColor="#999999"/>
+                        <EditText android:id="@+id/etDifficulty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Легко" android:textSize="14sp" android:textStyle="bold" android:background="@null" android:textColor="#2A5DA1"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏷 Категория" android:textSize="10sp" android:textColor="#999999"/>
+                        <EditText android:id="@+id/etCategory" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Пати" android:textSize="14sp" android:textStyle="bold" android:background="@null" android:textColor="#2A5DA1"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Правила игры"
+                    android:textColor="#2A5DA1"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/detailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@null"
+                    android:hint="Описание правил..."
                     android:textColor="#666666"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnPlay"
+                    android:id="@+id/btnEditGame"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#2A5DA1"
+                    android:text="Редактировать"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/btnSaveGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="#DAE9FA"
-                    android:text="Играть сейчас"
+                    android:text="Сохранить"
                     android:textColor="#2A5DA1"
+                    android:visibility="gone"
+                    app:cornerRadius="15dp" />
+
+                <Button
+                    android:id="@+id/btnStartPlaying"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Начать игру"
+                    android:backgroundTint="#2A5DA1"
                     app:cornerRadius="15dp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

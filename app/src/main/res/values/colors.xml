@@ -3,4 +3,5 @@
     <color name="bg_entrance">#DAE9FA</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="apple_blue">#0A84FF</color> <color name="apple_grey">#1C1C1E</color> <color name="text_grey">#8E8E93</color>
 </resources>

@@ -13,18 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 1. Находим фрагмент-контейнер, в котором будут меняться экраны
+        // Используем более надежный способ поиска NavController
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
 
         if (navHostFragment != null) {
             NavController navController = navHostFragment.getNavController();
-
-            // 2. Находим наше нижнее меню
             BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
-            // 3. Магия: связываем меню с контроллером навигации
-            NavigationUI.setupWithNavController(bottomNav, navController);
+            if (bottomNav != null) {
+                NavigationUI.setupWithNavController(bottomNav, navController);
+            }
         }
     }
 }

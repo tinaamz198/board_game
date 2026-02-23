@@ -15,7 +15,9 @@ public class GameRepository {
         gameDao = database.gameDao();
     }
 
-    public LiveData<List<BoardGame>> getCatalogGames() { return gameDao.getCatalogGames(); }
+    public LiveData<List<BoardGame>> getCatalogGames() {
+        return gameDao.getAllGames();
+    }
     public LiveData<List<BoardGame>> getFavoriteGames() { return gameDao.getFavoriteGames(); }
     public LiveData<List<BoardGame>> getUserGames() { return gameDao.getUserGames(); }
 

@@ -3,22 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/entranceFragment">
-
-    <fragment
-        android:id="@+id/entranceFragment"
-        android:name="com.example.boardgame.EntranceFragment"
-        android:label="EntranceFragment" >
-        <action
-            android:id="@+id/action_entranceFragment_to_catalogFragment"
-            app:destination="@id/catalogFragment" />
-    </fragment>
+    app:startDestination="@id/catalogFragment">
 
     <fragment
         android:id="@+id/catalogFragment"
         android:name="com.example.boardgame.CatalogFragment"
         android:label="Каталог"
         tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_catalogFragment_to_fullCatalogFragment"
+            app:destination="@id/fullCatalogFragment" />
         <action
             android:id="@+id/action_catalogFragment_to_gameDetailFragment"
             app:destination="@id/gameDetailFragment" />
@@ -27,18 +21,68 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.boardgame.FavoriteFragment"
-        android:label="Избранное"
-        tools:layout="@layout/fragment_catalog" />
+        android:label="Избранное" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/myGamesFragment"
         android:name="com.example.boardgame.MyGamesFragment"
-        android:label="Мои игры"
-        tools:layout="@layout/fragment_catalog" />
+        android:label="Мои игры" >
+        <action
+            android:id="@+id/action_myGamesFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fullCatalogFragment"
+        android:name="com.example.boardgame.FullCatalogFragment"
+        android:label="Весь каталог"
+        tools:layout="@layout/fragment_full_catalog">
+        <action
+            android:id="@+id/action_fullCatalogFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+        <action
+            android:id="@+id/action_fullCatalogFragment_to_filterBottomSheet"
+            app:destination="@id/filterBottomSheet" />
+    </fragment>
 
     <fragment
         android:id="@+id/gameDetailFragment"
         android:name="com.example.boardgame.GameDetailFragment"
-        android:label="Детали игры" />
+        android:label="Детали игры" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameDetailFragment_to_gamePlayFragment"
+            app:destination="@id/gamePlayFragment" />
+        <action
+            android:id="@+id/action_gameDetailFragment_to_editQuestionsFragment"
+            app:destination="@id/editQuestionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gamePlayFragment"
+        android:name="com.example.boardgame.GamePlayFragment"
+        android:label="Играем" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gamePlayFragment_to_editQuestionsFragment"
+            app:destination="@id/editQuestionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editQuestionsFragment"
+        android:name="com.example.boardgame.EditQuestionsFragment"
+        android:label="Редактирование вопросов" />
+    <dialog
+        android:id="@+id/filterBottomSheet"
+        android:name="com.example.boardgame.FilterBottomSheet"
+        android:label="FilterBottomSheet" />
 
 </navigation>
