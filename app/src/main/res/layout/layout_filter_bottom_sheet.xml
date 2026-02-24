@@ -50,26 +50,22 @@
             app:chipStrokeWidth="1dp"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipStrategy"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Стратегия"
-            android:textColor="#FFFFFF"
-            app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="true"
-            app:checkedIconTint="#FFFFFF"/>
-
-        <com.google.android.material.chip.Chip
             android:id="@+id/chipParty"
             style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Вечеринка"
             android:textColor="#FFFFFF"
-            app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="true"
-            app:checkedIconTint="#FFFFFF"/>
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipStrategy"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Стратегия"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipDetective"
@@ -78,9 +74,53 @@
             android:layout_height="wrap_content"
             android:text="Детектив"
             android:textColor="#FFFFFF"
-            app:chipBackgroundColor="#2C2C2E"
-            app:checkedIconVisible="true"
-            app:checkedIconTint="#FFFFFF"/>
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCreativity"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Творчество"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipIntellectual"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Интеллектуальная"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCards"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Карточная"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLogic"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Логика"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAdventure"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Приключения"
+            android:textColor="#FFFFFF"
+            app:chipBackgroundColor="#2C2C2E" />
+
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
