@@ -98,7 +98,10 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         BoardGame currentGame = gameList.get(position);
         holder.titleText.setText(currentGame.getTitle());
-        holder.descText.setText(currentGame.getDescription());
+        String cleanDesc = currentGame.getDescription()
+                .replace("ОПИСАНИЕ:", "")
+                .trim();
+        holder.descText.setText(cleanDesc);
 
         String path = currentGame.getImagePath();
         if (path == null || path.equals("no_photo") || path.isEmpty()) {

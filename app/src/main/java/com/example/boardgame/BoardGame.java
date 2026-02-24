@@ -10,6 +10,7 @@ public class BoardGame {
 
     private String title;
     private String description;
+    private String rules;
     private String imagePath;
 
     private boolean isFeatured;
@@ -23,11 +24,12 @@ public class BoardGame {
     private float rating;
 
     // ОБНОВЛЕННЫЙ Конструктор (добавлен параметр float rating)
-    public BoardGame(String title, String description, String imagePath, boolean isFeatured,
+    public BoardGame(String title, String description, String rules, String imagePath, boolean isFeatured,
                      boolean isFavorite, boolean isUserGame, String players, String difficulty,
                      String category, float rating) {
         this.title = title;
         this.description = description;
+        this.rules = rules;
         this.imagePath = imagePath;
         this.isFeatured = isFeatured;
         this.isFavorite = isFavorite;
@@ -35,7 +37,7 @@ public class BoardGame {
         this.players = players;
         this.difficulty = difficulty;
         this.category = category;
-        this.rating = rating; // Сохраняем рейтинг
+        this.rating = rating;
     }
 
     // Геттеры и сеттеры
@@ -47,6 +49,9 @@ public class BoardGame {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public String getRules() { return rules; }
+    public void setRules(String rules) { this.rules = rules; }
 
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }

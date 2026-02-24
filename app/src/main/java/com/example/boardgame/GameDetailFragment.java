@@ -82,7 +82,7 @@ public class GameDetailFragment extends Fragment {
                         currentGame = g;
                         etTitle.setText(g.getTitle());
                         etShortDesc.setText(g.getDescription()); // Здесь описание
-                        etFullRules.setText(g.getDescription()); // Здесь правила (пока из того же поля)
+                        etFullRules.setText(g.getRules()); // Здесь правила (пока из того же поля)
                         etPlayers.setText(g.getPlayers());
                         etDifficulty.setText(g.getDifficulty());
                         etCategory.setText(g.getCategory());
@@ -123,6 +123,7 @@ public class GameDetailFragment extends Fragment {
             if (currentGame != null) {
                 currentGame.setTitle(etTitle.getText().toString());
                 currentGame.setDescription(etShortDesc.getText().toString());
+                currentGame.setRules(etFullRules.getText().toString());
                 currentGame.setPlayers(etPlayers.getText().toString());
                 currentGame.setDifficulty(etDifficulty.getText().toString());
                 currentGame.setCategory(etCategory.getText().toString());
