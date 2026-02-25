@@ -1,4 +1,4 @@
-package com.example.boardgame;
+package com.example.boardgame.catalog;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.boardgame.GameAdapter;
+import com.example.boardgame.R;
+import com.example.boardgame.database.BoardGame;
+import com.example.boardgame.base.GameViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,24 +41,30 @@ public class CatalogFragment extends Fragment {
         setupFeaturedCarousel(view);
         setupPopularList(view);
 
-        // ГЛАВНОЕ ИЗМЕНЕНИЕ: Используем только getAllGames()
         gameViewModel.getAllGames().observe(getViewLifecycleOwner(), games -> {
             if (games != null && !games.isEmpty()) {
 
-                // 1. ВЕРХНЯЯ КАРТОЧКА (Самая новая игра)
-                List<BoardGame> latest = new ArrayList<>();
-                latest.add(games.get(0));
-                featuredAdapter.setGames(latest);
+                // --- ВЕРХНЯЯ КАРУСЕЛЬ: СЛУЧАЙНЫЕ ИГРЫ ---
+                List<BoardGame> randomGames = new ArrayList<>(games);
+                java.util.Collections.shuffle(randomGames); // Перемешиваем весь список
 
-                // 2. НИЖНИЙ СПИСОК (Следующие 5 игр после самой новой)
-                if (games.size() > 1) {
-                    List<BoardGame> recentOnes = new ArrayList<>();
-                    // Начинаем с i=1, чтобы самая новая игра не дублировалась внизу
-                    for (int i = 1; i < Math.min(games.size(), 6); i++) {
-                        recentOnes.add(games.get(i));
+                // Берем, например, первые 5 случайных игр для показа
+                List<BoardGame> featured = randomGames.subList(0, Math.min(5, randomGames.size()));
+                featuredAdapter.setGames(featured);
+
+                // --- НИЖНИЙ СПИСОК: ТОЛЬКО "СЫГРАТЬ" ---
+                List<BoardGame> quickPlayGames = new ArrayList<>();
+                for (BoardGame game : games) {
+                    String title = game.getTitle().trim();
+                    // Отбираем только нужные три игры для нижнего списка
+                    if (title.equalsIgnoreCase("Мафия") ||
+                            title.equalsIgnoreCase("Рандомайзер") ||
+                            title.equalsIgnoreCase("Мои вопросы")) {
+                        quickPlayGames.add(game);
                     }
-                    popularAdapter.setGames(recentOnes);
                 }
+                // Устанавливаем эти 3 игры в нижний адаптер
+                popularAdapter.setGames(quickPlayGames);
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.boardgame;
+package com.example.boardgame.catalog;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.boardgame.GameAdapter;
+import com.example.boardgame.R;
+import com.example.boardgame.base.GameViewModel;
+
 import java.util.ArrayList;
 
 public class FavoriteFragment extends Fragment {

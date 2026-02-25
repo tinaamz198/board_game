@@ -1,9 +1,11 @@
-package com.example.boardgame;
+package com.example.boardgame.catalog;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.boardgame.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SortBottomSheet extends BottomSheetDialogFragment {

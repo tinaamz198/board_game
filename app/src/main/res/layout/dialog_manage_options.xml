@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить новый вариант"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etNewOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Например: Сходить в кино"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:background="@android:drawable/editbox_background"
+        android:padding="12dp"
+        android:inputType="textCapSentences"/>
+
+    <Button
+        android:id="@+id/btnAddOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ДОБАВИТЬ В СПИСОК"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#0A84FF"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DDDDDD"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Текущие варианты (зажмите для удаления):"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp"/>
+
+    <ListView
+        android:id="@+id/lvOptions"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:divider="#EEEEEE"
+        android:dividerHeight="1dp"
+        android:background="#F9F9F9"/>
+
+</LinearLayout>

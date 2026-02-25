@@ -1,9 +1,13 @@
-package com.example.boardgame;
+package com.example.boardgame.base;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.boardgame.database.GameRepository;
+import com.example.boardgame.database.BoardGame;
+
 import java.util.List;
 
 public class GameViewModel extends AndroidViewModel {

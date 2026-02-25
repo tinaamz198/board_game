@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.boardgame.database.BoardGame;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -98,11 +101,13 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
         BoardGame currentGame = gameList.get(position);
         holder.titleText.setText(currentGame.getTitle());
+
         String cleanDesc = currentGame.getDescription()
                 .replace("ОПИСАНИЕ:", "")
                 .trim();
         holder.descText.setText(cleanDesc);
 
+        // Установка картинки
         String path = currentGame.getImagePath();
         if (path == null || path.equals("no_photo") || path.isEmpty()) {
             holder.gameImage.setImageResource(R.drawable.game1);
@@ -112,6 +117,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
             else holder.gameImage.setImageURI(Uri.parse(path));
         }
 
+        // Логика избранного
         holder.imgFavorite.setColorFilter(currentGame.isFavorite() ? Color.parseColor("#FFD60A") : Color.parseColor("#8E8E93"));
         holder.imgFavorite.setOnClickListener(v -> {
             if (favoriteClickListener != null) {
@@ -121,8 +127,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
             }
         });
 
+        // ИСПРАВЛЕННЫЙ КЛИК ПО КАРТОЧКЕ
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) listener.onItemClick(currentGame);
+            if (listener != null) {
+                // Сначала вызываем стандартный листенер (откроет детали)
+                listener.onItemClick(currentGame);
+            }
         });
     }
 

@@ -1,4 +1,4 @@
-package com.example.boardgame;
+package com.example.boardgame.database;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
